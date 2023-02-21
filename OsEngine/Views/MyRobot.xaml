@@ -1,0 +1,85 @@
+﻿<mah:MetroWindow x:Class="OsEngine.Views.MyRobot"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OsEngine.Views" xmlns:viewmodels="clr-namespace:OsEngine.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:MyRobotVM}"
+        xmlns:mah="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        mc:Ignorable="d"
+        Title="MyRobot" Height="450" Width="800">
+    
+    <Window.Resources>
+        <Style TargetType="TextBlock">
+            <Setter Property="MinWidth" Value="60"/>
+        </Style>
+        
+        <Style TargetType="ComboBox">
+            <Setter Property="MinWidth" Value="60"/>
+        </Style>        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+    <StackPanel Orientation="Horizontal">
+        <Button Content="Servers" Command="{Binding CommandServersToConnect}"></Button>
+            <TextBlock Text="{Binding ServerType}"/>
+            <TextBlock Text="{Binding StatusServer}"/>
+            <TextBlock Text="Porfolio:"/>
+            <ComboBox ItemsSource="{Binding Portfolios}" SelectedItem="{Binding Portfolio}"/>
+            <TextBlock Text="Emitent:"/>
+            <ComboBox ItemsSource="{Binding ListSecurities}"
+                  SelectedItem="{Binding SelectedSecurity}"/>
+    </StackPanel>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <GroupBox Header="Parameters" Grid.Row="1" Grid.Column="0"
+                  Width="300" HorizontalAlignment="Left"
+                  Height="280" VerticalAlignment="Top">
+                <UniformGrid Columns="2">
+                    <TextBlock Text="Start point:"/>
+                    <local:DecimalTextBox Text="{Binding StartPoint}"/>
+                    <TextBlock Text="Count levels"/>
+                    <local:IntTextBox Text="{Binding CountLevels}"/>
+                    <TextBlock Text="Direction"/>
+                    <ComboBox ItemsSource="{Binding Directions}" 
+                          SelectedItem="{Binding Direction}"/>
+                    <TextBlock Text="Lot in level"/>
+                    <local:UnsignedDecimalTextBox Text="{Binding Lot}"/>
+                    <TextBlock Text="Step type"/>
+                    <ComboBox ItemsSource="{Binding StepTypes}"
+                          SelectedItem="{Binding StepType}"/>
+                    <TextBlock Text="Step level"/>
+                    <local:UnsignedDecimalTextBox Text="{Binding StepLevel}"/>
+                    <TextBlock Text="Take profit"/>
+                    <local:UnsignedDecimalTextBox Text="{Binding TakeLevel}"/>
+                    <TextBlock Text="Max active level"/>
+                    <local:IntTextBox Text="{Binding MaxActiveLevel}"/>
+                </UniformGrid>
+            </GroupBox>
+            
+            <GroupBox Header="Position" Grid.Column="1" Height="280" VerticalAlignment="Top">
+                <UniformGrid Columns="2">
+                    <TextBlock Text="All Positions"/>
+                    <TextBlock Text="{Binding AllPositionsCount}"/>
+                    <TextBlock Text="Price average"/>
+                    <TextBlock Text="{Binding PriceAverage}"/>
+                    <TextBlock Text="Var margine"/>
+                    <TextBlock Text="{Binding VarMargine}"/>
+                    <TextBlock Text="Accum"/>
+                    <TextBlock Text="{Binding Accum}"/>
+                    <TextBlock Text="Total"/>
+                    <TextBlock Text="{Binding Total}"/>
+                </UniformGrid>
+
+            </GroupBox>
+        </Grid>                    
+    </Grid>
+</mah:MetroWindow>

@@ -1,0 +1,35 @@
+﻿<Window x:Class="OsEngine.Robots.FrontRunner.Views.FrontRunnerUi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:OsEngine.Robots.FrontRunner.Views"
+        mc:Ignorable="d"
+        Title="FrontRunnerUi" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Крупный объём" Grid.Row="0"/>
+        <TextBlock Text="Отступ" Grid.Row="1"/>
+        <TextBlock Text="Тейк-профит" Grid.Row="2"/>
+        <TextBlock Text="Лот" Grid.Row="3"/>
+
+        <TextBox Text="{Binding BigVolume}" Grid.Column="1" Grid.Row="0"/>
+        <TextBox Text="{Binding Offset}" Grid.Column="1" Grid.Row="1"/>
+        <TextBox Text="{Binding Take}" Grid.Column="1" Grid.Row="2"/>
+        <TextBox Text="{Binding Lot}" Grid.Column="1" Grid.Row="3"/>
+
+        <Button Content="{Binding Edit}" Command="{Binding CommandStart}" Grid.Column="1" Grid.Row="4"/>
+
+    </Grid>
+</Window>
